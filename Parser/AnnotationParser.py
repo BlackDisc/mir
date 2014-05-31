@@ -57,13 +57,21 @@ class CSVParser:
 
 
 if __name__ == '__main__':
-	
-	""" Path of annotations and database """
+
+    # Path of annotations, in this case folders with audio tracks
+    # should be placed in /home/user/Magnatagtune/
     filename = '/home/user/Magnatagtune/annotations_final.csv'
- 
+
+    # Open file with annotation
     file = open(filename, 'rb')
+
+    # Creating CSVParser object
     mangaCSV = CSVParser(file)
+
+    # Getting names of songs in singer category. Return list of string
     print 'Files with singer category'
     print mangaCSV.printFilesInCategory('singer')
+
+    # Getting all tags of track
     print 'Categories of burnshee_thornside-rock_this_moon-01-bad_bad_luck-117-146'
     print mangaCSV.printCategoriesOfFile('burnshee_thornside-rock_this_moon-01-bad_bad_luck-117-146')
