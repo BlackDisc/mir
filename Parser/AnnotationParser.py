@@ -54,7 +54,22 @@ class CSVParser:
             rownum += 1
         self.file.seek(0)
 
-
+    def printAllFiles(self):
+        fileList = []
+        rownum = 0
+        for row in self.reader:
+            if rownum == 0:
+                header = row
+                header = header[0].replace('"','')
+                header = header.split('\t')
+                rownum += 1
+            else:
+                row = row[0].replace('"','')
+                row = row.split('\t')
+                fileList.append(row[-1])
+                rownum += 1
+        self.file.seek(0)
+        return fileList
 
 if __name__ == '__main__':
 
@@ -75,3 +90,9 @@ if __name__ == '__main__':
     # Getting all tags of track
     print 'Categories of burnshee_thornside-rock_this_moon-01-bad_bad_luck-117-146'
     print mangaCSV.printCategoriesOfFile('burnshee_thornside-rock_this_moon-01-bad_bad_luck-117-146')
+
+    #Getting list of all annotated files
+    print 'All annotated files'
+    print mangaCSV.printAllFiles()
+
+
